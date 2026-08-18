@@ -49,10 +49,13 @@ java {
 }
 
 kotlin {
+    // Compile with the Java 17 toolchain available in CI/local runners while
+    // preserving the Java 11 bytecode target required by the plugin API.
     jvmToolchain(17)
     compilerOptions {
         apiVersion.set(KotlinVersion.KOTLIN_2_1)
         languageVersion.set(KotlinVersion.KOTLIN_2_1)
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
     }
 }
 
